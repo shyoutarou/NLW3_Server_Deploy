@@ -18,16 +18,6 @@ export class createOrphanages1602636892573 implements MigrationInterface {
                 { name: 'whatsapp', type: 'varchar', isNullable:true},
                 { name: "user_id", type: "integer", isNullable:true},
                 { name: 'permission', type: 'boolean', default: false },
-            ],
-            foreignKeys: [
-              {
-                  name: "UserId",
-                  columnNames: ["user_id"],
-                  referencedColumnNames: ["id"],
-                  referencedTableName: "users",
-                  onUpdate: "CASCADE",
-                  onDelete: "CASCADE"
-              }
             ]
         }));
     }
