@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class createOrphanages1602636892573 implements MigrationInterface {
+export class createOrphanages1604578754775 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         return queryRunner.createTable(new Table({
@@ -18,6 +18,16 @@ export class createOrphanages1602636892573 implements MigrationInterface {
                 { name: 'whatsapp', type: 'varchar', isNullable:true},
                 { name: "user_id", type: "integer", isNullable:true},
                 { name: 'permission', type: 'boolean', default: false },
+            ],
+            foreignKeys: [
+              {
+                  name: "UserId",
+                  columnNames: ["user_id"],
+                  referencedColumnNames: ["id"],
+                  referencedTableName: "users",
+                  onUpdate: "CASCADE",
+                  onDelete: "CASCADE"
+              }
             ]
         }));
     }
@@ -25,4 +35,5 @@ export class createOrphanages1602636892573 implements MigrationInterface {
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable('orphanages');        
     }
+
 }
