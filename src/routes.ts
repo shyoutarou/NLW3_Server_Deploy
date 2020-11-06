@@ -23,7 +23,7 @@ routes.get('/orphanages', orphanagesController.index);
 routes.post('/orphanages', orphanagesController.create);
 
 routes.get('/indexPending/:ok', auth, orphanagesController.indexPending);
-routes.get('/orphanages/:id', auth, orphanagesController.show);
+routes.get('/orphanages/:id', orphanagesController.show);
 routes.put('/orphanages/images/:id', auth, upload.array('images'), orphanagesController.updateImage)
 routes.delete('/orphanages/delete/:id', auth, orphanagesController.deleteOrphanage)
 routes.put('/orphanages/update/:id', auth, orphanagesController.updateOrphanage)
