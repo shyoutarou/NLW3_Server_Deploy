@@ -78,7 +78,7 @@ export default class OrphanagesController  {
 
             let query = orphanagesRespository
                         .createQueryBuilder('orphanages')
-                        .where(`permission = ${ ok === "0" }`);
+                        .where(`permission = ${ ok === "1" }`);
 
             if(ok === "0") query=query.andWhere(`user_id IS NULL`);
 
