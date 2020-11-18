@@ -10,7 +10,7 @@ import { MailtrapMailProvider } from "../providers/implementations/MailtrapMailP
 
 function generateToken(params: any) {
     return jwt.sign(params, String(process.env.SECRET_KEY), {
-      expiresIn: '20s',
+      expiresIn: '20m',
     })
   }
 
@@ -132,6 +132,7 @@ export default class UsersController  {
     
             const password_token = crypto.randomBytes(16).toString('hex')
             const token_expires = new Date()
+            const date_expires = new Date()
             // token_expires.setMinutes(token_expires.getMinutes() + 1)
 
             // console.log("token_expires: " + token_expires.getTime());
@@ -166,7 +167,7 @@ export default class UsersController  {
             console.log("d3 " + d3.toISOString()); // 2017-12-01T03:40:39.639Z
 
 
-            const updateuser = { password_token, token_expires };
+            const updateuser = { password_token, token_expires, date_expires };
 
             userRepository.save({
                 ...user, // existing fields
